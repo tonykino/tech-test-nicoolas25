@@ -1,10 +1,10 @@
-require 'level0/zero.rb'
+require 'level0/level0.rb'
 
-describe Zero do
+describe Level0 do
   describe '#multiply' do
 
     describe 'with factor' do
-      subject { Zero.new.multiply(nb, factor) }
+      subject { Level0.new.multiply(nb, factor) }
       let(:nb) { 4 }
       let(:factor) { 6 }
 
@@ -12,7 +12,7 @@ describe Zero do
     end
 
     describe 'without factor' do
-      subject { Zero.new.multiply(nb) }
+      subject { Level0.new.multiply(nb) }
       let(:nb) { 5 }
 
       it { is_expected.to be(15) }
