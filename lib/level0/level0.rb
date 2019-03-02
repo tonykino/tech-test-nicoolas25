@@ -1,6 +1,8 @@
-class Level0
+# frozen_string_literal: true
 
-  def multiply(nb, factor = 3)
-    nb * factor
+# This class aims to test rspec configuration
+class Level0
+  def multiply(nbr, factor = 3)
+    nbr * factor
   end
 end
