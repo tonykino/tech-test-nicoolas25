@@ -20,7 +20,11 @@ class T9Converter
 
     def read_word_list
       Dir.chdir(File.dirname(__FILE__)) # permit to call ruby script from anywhere
-      File.readlines('words_sorted_by_popularity.txt', chomp: true).map { |a| a.split("\t").first }
+      File.readlines('words_sorted_by_popularity.txt', chomp: true).map(&method(:delete_occurrence))
+    end
+
+    def delete_occurrence(word)
+      word.split("\t").first
     end
 
     def possible_words(seq)
