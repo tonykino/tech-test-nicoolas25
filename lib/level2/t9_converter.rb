@@ -4,7 +4,7 @@ require_relative 'keypad'
 
 class T9Converter
   def initialize
-    @words = get_word_list
+    @words = read_word_list
   end
 
   def t9_to_word(seq)
@@ -18,7 +18,7 @@ class T9Converter
 
   private
 
-    def get_word_list
+    def read_word_list
       Dir.chdir(File.dirname(__FILE__)) # permit to call ruby script from anywhere
       File.readlines('word.txt', chomp: true)
     end
@@ -32,7 +32,7 @@ class T9Converter
     end
 
     def char_to_tap(char)
-      KeyPad::T9_CORRESPONDENCE_TABLE.find { |k, v| v.include?(char) }.first
+      KeyPad::T9_CORRESPONDENCE_TABLE.find { |_key, value| value.include?(char) }.first
     end
 
     def add_ones_if_needed(t9_word, seq)
@@ -40,7 +40,6 @@ class T9Converter
       word_position.times { t9_word << '1' }
       t9_word
     end
-
 end
 
 if $PROGRAM_NAME == __FILE__
